@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>XML考试页面-2018010801</title>
+  <script type="text/javascript">
+    function LoadRequest_stuid() {
+      var stu_id = document.getElementById("student_id").value;
+      var xmlhttp;
+      if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+      }
+      xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          document.getElementById("data_area").innerHTML = xmlhttp.responseText;
+        }
+      }
+      xmlhttp.open("GET", " https://html.ftmc.me/obtain/?studentId=" + stu_id, true);
+      xmlhttp.send();
+    }
+
+    function LoadRequest_ques() {
+      var que_id = document.getElementById("question_id").value;
+      var stu_id = document.getElementById("student_id").value;
+      var xmlhttp;
+      if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+      }
+      xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          document.getElementById("data_area").innerHTML = xmlhttp.responseText;
+        }
+      }
+      xmlhttp.open("GET", " https://html.ftmc.me/obtain/?studentId=" + stu_id + "&ordinal=" + que_id, true);
+      xmlhttp.send();
+    }
+
+    function LoadRequest_ans() {
+      var ans = document.getElementById("answer").value;
+      var que_id = document.getElementById("question_id").value;
+      var stu_id = document.getElementById("student_id").value;
+      var xmlhttp;
+      if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+      }
+      xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          document.getElementById("data_area").innerHTML = xmlhttp.responseText;
+        }
+      }
+      xmlhttp.open("GET", " https://html.ftmc.me/submit/?studentId=" + stu_id + "&ordinal=" + que_id + "&answer=" +
+              ans, true);
+      xmlhttp.send();
+    }
+  </script>
+  <style type="text/css">
+    body {
+      background-color: rgb(243, 220, 255);
+    }
+
+    #title {
+      color: gray;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    #data_area {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+      border: dotted;
+    }
+  </style>
+</head>
+<body>
+<div align="center" id="title">XML考试客户端</div>
+<table align="center" border="0">
+  <tr>
+    <th>学号：</th>
+    <td><input type="text" id="student_id"></td>
+    <td><input type="button" id="take_out" value="抽取题目" onclick="LoadRequest_stuid()"></td>
+  </tr>
+  <tr>
+    <th>题号：</th>
+    <td><input type="text" id="question_id"></td>
+    <td><input type="button" id="gain" value="获取题目" onclick="LoadRequest_ques()"></td>
+  </tr>
+  <tr>
+    <th>答案：</th>
+    <td><input type="text" id="answer"></td>
+    <td><input type="button" id="ans_submit" value="回答问题" onclick="LoadRequest_ans()"></td>
+  </tr>
+</table>
+<div align="center" id="data_area">返回数据区</div>
+</body>
+</html>
