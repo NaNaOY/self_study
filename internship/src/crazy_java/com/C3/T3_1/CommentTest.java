@@ -1,4 +1,5 @@
-package crazy_java.com.T3_1;
+package crazy_java.com.C3.T3_1;
+
 
 public class CommentTest {
     /*
@@ -9,6 +10,5 @@ public class CommentTest {
         //这是一行简单的注释
         System.out.println("Hello World!");
         //System.out.println("这行代码被注释了，将不会被编译、执行！")；
-
     }
 }
